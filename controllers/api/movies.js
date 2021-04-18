@@ -26,12 +26,12 @@ async function show(req, res) {
 async function create(req, res) {
     console.log(req.body)
     await Movie.create({
-        title: req.body.title,
-        releaseYear: req.body.release-year,
-        nowShowing: req.body.now-showing,
-        reviews: req.body.review,
-        cast: req.body.cast,
-        mpaaRating: req.body.rating,
+        title: req.params.title,
+        releaseYear: req.params.releaseYear,
+        nowShowing: req.params.nowShowing,
+        reviews: req.params.reviews,
+        cast: req.params.cast,
+        mpaaRating: req.body.mpaaRating,
     }, function(err, movie) {
         return res.status(201).json(movie)
     })
@@ -41,11 +41,11 @@ async function update(req, res) {
     console.log(req.body)
     await Movie.find({_id:req.params.id}, function(err, movie) {
         title = req.body.title
-        releaseYear = req.body.release-year
-        nowShowing = req.body.now-showing
-        reviews = req.body.review
+        releaseYear = req.body.releaseYear
+        nowShowing = req.body.nowShowing
+        reviews = req.body.reviews
         cast = req.body.cast
-        mpaaRating = req.body.rating
+        mpaaRating = req.body.mpaaRating
         return res.status(204).json(movie)
     })
 }
